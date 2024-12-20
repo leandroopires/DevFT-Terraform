@@ -92,31 +92,31 @@ variable "user_admin_group_for_vault_policy" {
 
 ## OKE Node Pool Details
 variable "node_pool_name" {
-  default     = "pool1"
+  default     = "TJSP-W0"
   description = "Name of the node pool"
 }
 variable "k8s_version" {
-  default     = "Latest"
+  default     = "v1.29.1"
   description = "Kubernetes version installed on your master and worker nodes"
 }
 variable "num_pool_workers" {
-  default     = 3
+  default     = 1
   description = "The number of worker nodes in the node pool. If select Cluster Autoscaler, will assume the minimum number of nodes configured"
 }
 variable "node_pool_shape" {
-  default     = "VM.Standard.E3.Flex"
+  default     = "VM.Standard.E4.Flex"
   description = "A shape is a template that determines the number of OCPUs, amount of memory, and other resources allocated to a newly created instance for the Worker Node"
 }
 variable "node_pool_node_shape_config_ocpus" {
-  default     = "1" # Only used if flex shape is selected
+  default     = "4" # Only used if flex shape is selected
   description = "You can customize the number of OCPUs to a flexible shape"
 }
 variable "node_pool_node_shape_config_memory_in_gbs" {
-  default     = "16" # Only used if flex shape is selected
+  default     = "64" # Only used if flex shape is selected
   description = "You can customize the amount of memory allocated to a flexible shape"
 }
 variable "node_pool_boot_volume_size_in_gbs" {
-  default     = "60"
+  default     = "100"
   description = "Specify a custom boot volume size (in GB)"
 }
 variable "image_operating_system" {
@@ -124,16 +124,53 @@ variable "image_operating_system" {
   description = "The OS/image installed on all nodes in the node pool."
 }
 variable "image_operating_system_version" {
-  default     = "7.9"
+  default     = "8.10"
   description = "The OS/image version installed on all nodes in the node pool."
 }
-variable "generate_public_ssh_key" {
-  default = true
+
+variable "node_pool_name" {
+  default     = "TJSP-W1"
+  description = "Name of the node pool"
 }
-variable "public_ssh_key" {
-  default     = ""
-  description = "In order to access your private nodes with a public SSH key you will need to set up a bastion host (a.k.a. jump box). If using public nodes, bastion is not needed. Left blank to not import keys."
+variable "k8s_version" {
+  default     = "v1.29.1"
+  description = "Kubernetes version installed on your master and worker nodes"
 }
+variable "num_pool_workers" {
+  default     = 1
+  description = "The number of worker nodes in the node pool. If select Cluster Autoscaler, will assume the minimum number of nodes configured"
+}
+variable "node_pool_shape" {
+  default     = "VM.Standard.E4.Flex"
+  description = "A shape is a template that determines the number of OCPUs, amount of memory, and other resources allocated to a newly created instance for the Worker Node"
+}
+variable "node_pool_node_shape_config_ocpus" {
+  default     = "4" # Only used if flex shape is selected
+  description = "You can customize the number of OCPUs to a flexible shape"
+}
+variable "node_pool_node_shape_config_memory_in_gbs" {
+  default     = "64" # Only used if flex shape is selected
+  description = "You can customize the amount of memory allocated to a flexible shape"
+}
+variable "node_pool_boot_volume_size_in_gbs" {
+  default     = "100"
+  description = "Specify a custom boot volume size (in GB)"
+}
+variable "image_operating_system" {
+  default     = "Oracle Linux"
+  description = "The OS/image installed on all nodes in the node pool."
+}
+variable "image_operating_system_version" {
+  default     = "8.10"
+  description = "The OS/image version installed on all nodes in the node pool."
+}
+#variable "generate_public_ssh_key" {
+#  default = true
+#}
+#variable "public_ssh_key" {
+#  default     = ""
+#  description = "In order to access your private nodes with a public SSH key you will need to set up a bastion host (a.k.a. jump box). If using public nodes, bastion is not needed. Left blank to not import keys."
+#}
 
 # Network Details
 ## CIDRs
@@ -141,10 +178,10 @@ variable "network_cidrs" {
   type = map(string)
 
   default = {
-    VCN-CIDR                      = "10.20.0.0/16"
-    SUBNET-REGIONAL-CIDR          = "10.20.10.0/24"
-    LB-SUBNET-REGIONAL-CIDR       = "10.20.20.0/24"
-    ENDPOINT-SUBNET-REGIONAL-CIDR = "10.20.0.0/28"
+    VCN-CIDR     = "10.222.0.0/16"
+    NET-PRIVATE  = "10.222.0.0/19"
+    NET-CLUSTER  = "10.222.32.0/20"
+    NET-PUB      = "10.222.48.0/21"
     ALL-CIDR                      = "0.0.0.0/0"
     PODS-CIDR                     = "10.244.0.0/16"
     KUBERNETES-SERVICE-CIDR       = "10.96.0.0/16"
