@@ -1,0 +1,21 @@
+# Identity and access parameters
+
+api_fingerprint = "ea:cd:18:ee:7c:7a:fa:1e:89:cd:12:9e:f9:3c:b6:57"
+
+api_private_key_path = "//home/leandro/terraform1/.oci/oci_api_key.pem"
+
+compartment_id = "ocid1.compartment.oc1..aaaaaaaa3jvylal43qlrp64e5ezrnsyz3brl6dbg5krartei6b7fxhvxkfia"
+
+tenancy_id = "ocid1.tenancy.oc1..aaaaaaaai23duz4g332fyodmiqtalw4ekimxvfuuqrhcwokz3tf36jvu5foa"
+
+user_id = "ocid1.user.oc1..aaaaaaaa3pqhn4du2sglexooqprdlc6u7sgulw3blp6snaxnvx3d6dbvtpyq"
+
+ssh_private_key_path = "/home/leandro/terraform1/.oci/oci_api_key.pem"
+
+ssh_public_key_path = "/home/leandro/terraform1/.oci/oci_api_key_public.pem"
+
+# general oci parameters
+
+label_prefix = "prod"
+
+region = "us-ashburn-1"

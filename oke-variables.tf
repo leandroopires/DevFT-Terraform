@@ -128,42 +128,6 @@ variable "image_operating_system_version" {
   description = "The OS/image version installed on all nodes in the node pool."
 }
 
-variable "node_pool_name" {
-  default     = "TJSP-W1"
-  description = "Name of the node pool"
-}
-variable "k8s_version" {
-  default     = "v1.29.1"
-  description = "Kubernetes version installed on your master and worker nodes"
-}
-variable "num_pool_workers" {
-  default     = 1
-  description = "The number of worker nodes in the node pool. If select Cluster Autoscaler, will assume the minimum number of nodes configured"
-}
-variable "node_pool_shape" {
-  default     = "VM.Standard.E4.Flex"
-  description = "A shape is a template that determines the number of OCPUs, amount of memory, and other resources allocated to a newly created instance for the Worker Node"
-}
-variable "node_pool_node_shape_config_ocpus" {
-  default     = "4" # Only used if flex shape is selected
-  description = "You can customize the number of OCPUs to a flexible shape"
-}
-variable "node_pool_node_shape_config_memory_in_gbs" {
-  default     = "64" # Only used if flex shape is selected
-  description = "You can customize the amount of memory allocated to a flexible shape"
-}
-variable "node_pool_boot_volume_size_in_gbs" {
-  default     = "100"
-  description = "Specify a custom boot volume size (in GB)"
-}
-variable "image_operating_system" {
-  default     = "Oracle Linux"
-  description = "The OS/image installed on all nodes in the node pool."
-}
-variable "image_operating_system_version" {
-  default     = "8.10"
-  description = "The OS/image version installed on all nodes in the node pool."
-}
 #variable "generate_public_ssh_key" {
 #  default = true
 #}
@@ -178,10 +142,10 @@ variable "network_cidrs" {
   type = map(string)
 
   default = {
-    VCN-CIDR     = "10.222.0.0/16"
-    NET-PRIVATE  = "10.222.0.0/19"
-    NET-CLUSTER  = "10.222.32.0/20"
-    NET-PUB      = "10.222.48.0/21"
+    VCN-CIDR     = "  "
+    NET-PRIVATE  = "10.224.0.0/19"
+    NET-CLUSTER  = "10.224.32.0/20"
+    NET-PUB      = "10.224.48.0/21"
     ALL-CIDR                      = "0.0.0.0/0"
     PODS-CIDR                     = "10.244.0.0/16"
     KUBERNETES-SERVICE-CIDR       = "10.96.0.0/16"
